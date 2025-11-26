@@ -20,7 +20,7 @@ function createWindow() {
   });
 
   // Load from dev server in development, dist folder in production
-  const isDev = process.env.NODE_ENV === 'development' || process.defaultApp;
+  const isDev = !app.isPackaged;
   
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173');

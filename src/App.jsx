@@ -7,6 +7,7 @@ import WindowButtons from './WindowButtons';
 import Timer from './Timer';
 import RunningTimer from './RunningTimer';
 import CompletionPage from './CompletionPage';
+import TaskSessions from './TaskSessions';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -68,6 +69,7 @@ function App() {
         <img src={tableImage} className="table-image"/>
         <img src={candleImage} className="candleFirst-image"/>
         <button className="start-button" onClick={handleStart}>Start</button>
+        <button className="sessions-button" onClick={() => setCurrentPage('sessions')}>Sessions</button>
       </div>
     );
   }
@@ -98,6 +100,15 @@ function App() {
         onExit={handleExit}
         onMinimize={handleMinimize}
         onClose={handleClose}
+      />
+    );
+  }
+  if(currentPage === 'sessions') {
+    return (
+      <TaskSessions
+        onMinimize={handleMinimize}
+        onClose={handleClose}
+        onBack={handleBack}
       />
     );
   }
