@@ -11,7 +11,7 @@ import threeFourthCandleSecondImage from './candleThirdPhase-2.png';
 import finalCandleImage from './candleFinalPhase.png';
 import tableImage from './table-image.png';
 
-function RunningTimer({ workMinutes, breakMinutes, startWithBreak, onExit, onSessionComplete, onMinimize, onClose }) {
+function RunningTimer({ workMinutes, breakMinutes, startWithBreak, autoStart, onExit, onSessionComplete, onMinimize, onClose }) {
     const [timeLeft, setTimeLeft] = useState(workMinutes*60);
     const [isWorkSession, setIsWorkSession] = useState(true);
     const [isPaused, setIsPaused] = useState(false);
@@ -124,6 +124,12 @@ function RunningTimer({ workMinutes, breakMinutes, startWithBreak, onExit, onSes
         setTimeLeft(isWorkSession ? workMinutes*60 : breakMinutes*60);
         setIsPaused(false);
     }
+
+    useEffect(() => {
+        if(autoStart) {
+            setIsPaused(false);
+        }
+    }, [autoStart]);
 
     return (
         <div className="timer-page">

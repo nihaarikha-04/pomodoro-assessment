@@ -10,66 +10,42 @@ const mockSessions = [
     taskName: "Build Login Component",
     duration: 25,
     status: "Completed",
-    date: "2025-11-26",
-    startTime: "09:00 AM",
-    endTime: "09:25 AM",
     notes: "Completed authentication flow with validation",
-    breaks: 1
   },
   {
     id: 2,
     taskName: "Fix Navigation Bug",
     duration: 50,
     status: "Completed",
-    date: "2025-11-26",
-    startTime: "10:00 AM",
-    endTime: "10:50 AM",
     notes: "Resolved routing issues in main nav",
-    breaks: 2
   },
   {
     id: 3,
     taskName: "Code Review",
-    duration: 25,
+    duration: 5,
     status: "Pending",
-    date: "2025-11-26",
-    startTime: "02:00 PM",
-    endTime: "02:25 PM",
     notes: "Review PR #142",
-    breaks: 1
   },
   {
     id: 4,
     taskName: "Write Documentation",
     duration: 75,
     status: "Completed",
-    date: "2025-11-25",
-    startTime: "11:00 AM",
-    endTime: "12:15 PM",
     notes: "API documentation for new endpoints",
-    breaks: 3
   },
   {
     id: 5,
     taskName: "Team Meeting",
     duration: 25,
     status: "Pending",
-    date: "2025-11-26",
-    startTime: "03:30 PM",
-    endTime: "03:55 PM",
     notes: "Sprint planning session",
-    breaks: 1
   },
   {
     id: 6,
     taskName: "Refactor Database Queries",
     duration: 100,
     status: "Completed",
-    date: "2025-11-25",
-    startTime: "01:00 PM",
-    endTime: "02:40 PM",
     notes: "Optimized slow queries, improved performance by 40%",
-    breaks: 4
   }
 ];
 
@@ -176,12 +152,6 @@ function TaskSessions({ onMinimize, onClose, onBack }) {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2 className="modal-title">{selectedSession.taskName}</h2>
-              <button
-                onClick={() => setSelectedSession(null)}
-                className="modal-close"
-              >
-                ✕
-              </button>
             </div>
 
             <div className={`modal-status ${selectedSession.status.toLowerCase()}`}>
@@ -196,12 +166,8 @@ function TaskSessions({ onMinimize, onClose, onBack }) {
                 <span>{selectedSession.date}</span>
               </div>
               <div className="detail-row">
-                <span>Time:</span>
-                <span>{selectedSession.startTime} - {selectedSession.endTime}</span>
-              </div>
-              <div className="detail-row">
-                <span>Breaks:</span>
-                <span>{selectedSession.breaks}</span>
+                <span>Break:</span>
+                <span>{(selectedSession.duration * 0.2).toFixed(0)} min</span>
               </div>
             </div>
 
@@ -209,6 +175,20 @@ function TaskSessions({ onMinimize, onClose, onBack }) {
               <strong>Notes:</strong>
               <p>{selectedSession.notes}</p>
             </div>
+
+            {selectedSession.status === "Pending" && (
+              <button 
+                className='modal-start-btn'
+                onClick={() => {
+                  if(typeof window.startPendingSession === 'function') {
+                    window.startPendingSession(selectedSession);
+                  }
+                  setSelectedSession(null);
+                }}
+              >
+                Start Session
+              </button>
+            )}
 
             <button
               onClick={() => setSelectedSession(null)}

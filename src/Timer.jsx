@@ -37,7 +37,7 @@ function Timer({ onBack, onBegin, onMinimize, onClose }) {
                 />
             </div>
             <button className='begin-button' onClick={handleBegin}> Begin </button>
-            <button className='back-button' onClick={onBack}> Back </button>
+            <button className='back-btn' onClick={onBack}> Back </button>
         </div>
     );
 }

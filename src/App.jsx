@@ -18,6 +18,7 @@ function App() {
 
   const [completionType, setCompletionType] = useState('work');
   const [nextSession, setNextSession] = useState('work');
+  const [runningSession, setRunningSession] = useState(null);
 
   const handleMinimize = () => {
     if(window?.electronAPI?.minimize) {
@@ -60,6 +61,18 @@ function App() {
   const handleContinue = () => {
     setCurrentPage('running');
   }
+
+  window.startPendingSession = (session) => {
+    if(session.status === "Pending") {
+      setRunningSession(session);
+      setTimerSettings({
+        workMinutes: session.duration,
+        breakMinutes: Math.floor(session.duration * 0.2)
+      });
+      setCurrentPage('running');
+    }
+  };
+
   if(currentPage === 'home') {
     return (
       <div className="app-box">
@@ -84,6 +97,7 @@ function App() {
         workMinutes={timerSettings.workMinutes}
         breakMinutes={timerSettings.breakMinutes}
         startWithBreak={nextSession === 'break'}
+        autoStart={true}
         onExit={handleExit}
         onSessionComplete={handleSessionComplete}
         onMinimize={handleMinimize}

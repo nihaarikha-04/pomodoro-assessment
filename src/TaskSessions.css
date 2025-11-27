@@ -11,19 +11,10 @@
   
   .controls-bar {
     display: flex;
-    gap: 8px;
-    padding: 10px;
-    background-color: #EC407A;
-    border-radius: 10px;
-    border: 3px solid #D81B60;
-  }
-  
-  .controls-bar {
-    display: flex;
     flex-direction: row;
     gap: 10px;
     padding: 10px;
-    background-color: #EC407A;
+    background-color: #FFB5B5;
     border-radius: 10px;
     border: 3px solid #D81B60;
     align-items: center;
@@ -36,7 +27,7 @@
     padding: 8px;
     border: 2px solid #D81B60;
     border-radius: 8px;
-    background-color: #F8BBD0;
+    background-color: #EC407A;
     color: black;
     font-family: 'Pixelify Sans';
     font-size: 12px;
@@ -51,7 +42,7 @@
     padding: 8px;
     border: 2px solid #D81B60;
     border-radius: 8px;
-    background-color: #F8BBD0;
+    background-color: #EC407A;
     color: black;
     font-family: 'Pixelify Sans';
     font-size: 12px;
@@ -59,13 +50,13 @@
   }
   
   .search-input::placeholder {
-    color: #C2185B;
+    color: black;
   }
   
   .search-input:focus,
   .filter-select:focus,
   .sort-select:focus {
-    background-color: #F8BBD0;
+    background-color: #EC407A;
   }
   
   .sessions-list {
@@ -75,13 +66,13 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 10px;
-    background-color: #EC407A;
+    background-color: #FFB5B5;
     border-radius: 10px;
     border: 3px solid #D81B60;
   }
   
   .session-card {
-    background-color: #F8BBD0;
+    background-color: #EC407A;
     border: 3px solid #D81B60;
     border-radius: 10px;
     padding: 12px;
@@ -138,15 +129,19 @@
   }
   
   .session-duration {
-    background-color: #EC407A;
-    border: 2px solid #D81B60;
-    border-radius: 8px;
+    border: #FFD500 3px solid;
+    background-color: #FFF394;
+    border-radius: 20px;
     padding: 6px;
     text-align: center;
     font-family: 'BitCount Prop Single';
     font-size: 18px;
     font-weight: bold;
-    color: white;
+    color: BLACK;
+  }
+
+  .session-duration:hover {
+    background-color: #FFEA76;
   }
   
   .session-meta {
@@ -205,17 +200,6 @@
     margin: 0;
     color: black;
     flex: 1;
-  }
-  
-  .modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #D81B60;
-    padding: 0;
-    margin-left: 10px;
-    line-height: 1;
   }
   
   .modal-close:hover {
@@ -302,10 +286,10 @@
   .modal-close-btn {
     width: 100%;
     padding: 12px;
-    background-color: #D81B60;
-    border: 3px solid #880E4F;
+    border: #FFD500 3px solid;
+    background-color: #FFF394;
     border-radius: 12px;
-    color: white;
+    color: black;
     font-family: 'Pixelify Sans';
     font-size: 16px;
     font-weight: bold;
@@ -314,10 +298,9 @@
   }
   
   .modal-close-btn:hover {
-    background-color: #C2185B;
+    background-color: #FFEA76;
   }
   
-  /* Scrollbar styling */
   .sessions-list::-webkit-scrollbar,
   .modal-content::-webkit-scrollbar {
     width: 8px;
@@ -349,4 +332,15 @@
   
   .back-button:hover {
     background-color: #FFEA76;
+  }
+
+  .modal-start-btn {
+    position: absolute;
+    top: 215px;
+    right: 50px;
+    font-size: 15px;
+    font-family: 'Pixelify Sans';
+    border: #FFD500 3px solid;
+    background-color: #FFF394;
+    border-radius: 30px;
   }
